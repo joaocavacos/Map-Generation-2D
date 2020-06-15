@@ -19,7 +19,7 @@ public class TileGeneration : MonoBehaviour
     public int disableLimit; //If the tile is "dead"
 
     [Range(1, 10)]
-    public int nSimulation; //Number of repetitions the program runs
+    public int nSimulation; //Number of repetitions of the generation
 
     private int[,] terrainMap; //Tile map array
     public Vector3Int tilemapSize;
@@ -47,7 +47,7 @@ public class TileGeneration : MonoBehaviour
 
         for (int i = 0; i < repetitions; i++)
         {
-            terrainMap = generateTilePosition(terrainMap);
+            terrainMap = generateTilePosition(terrainMap); 
         }
 
         for (int x = 0; x < w; x++)
@@ -55,8 +55,11 @@ public class TileGeneration : MonoBehaviour
             for (int y = 0; y < h; y++)
             {
                 if (terrainMap[x, y] == 1)
-                {
-                    topMap.SetTile(new Vector3Int(-x + w / 2,-y +  h / 2, 0), topTile); //Doesn't start at pos 0
+				{
+                    topMap.SetTile(new Vector3Int(-x + w / 2, -y + h / 2, 0), topTile); //Doesn't start at pos 0
+				}
+				else
+				{
                     bottomMap.SetTile(new Vector3Int(-x + w / 2, -y + h / 2, 0), bottomTile); //Doesn't start at pos 0
                 }
             }
@@ -95,11 +98,11 @@ public class TileGeneration : MonoBehaviour
                     }
                     else
                     {
-                        //neighbourTile++; //Delete if you want no border
+                        neighbourTile++; //Delete if you want no border
                     }
                 }
 
-                if (oldMap[x, y] == 1) //1= dead tile, 0= alive tile
+                if (oldMap[x, y] == 1) //1= alive tile, 0= dead tile
                 {
                     if (neighbourTile < disableLimit)
                     {
@@ -111,7 +114,7 @@ public class TileGeneration : MonoBehaviour
                     }
                 }
 
-                if (oldMap[x, y] == 0) //1= dead tile, 0= alive tile
+                if (oldMap[x, y] == 0) //1= alive tile, 0= dead tile
                 {
                     if (neighbourTile > activeLimit)
                     {
