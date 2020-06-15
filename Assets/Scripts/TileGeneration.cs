@@ -32,6 +32,19 @@ public class TileGeneration : MonoBehaviour
 
     int w, h;
 
+    void Update()
+    {
+		if (Input.GetMouseButtonDown(0))
+		{
+            Simulation(nSimulation); //Create tile map
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+            clearTileMap(true); //Clear array and tile maps
+		}
+    }
+
     void Simulation(int repetitions)
 	{
         clearTileMap(false);
@@ -53,7 +66,11 @@ public class TileGeneration : MonoBehaviour
 		{
 			for (int y = 0; y < h; y++)
 			{
-
+                if(terrainMap[x,y] == 1)
+				{
+                    topMap.SetTile(new Vector3Int(-x + w / 2, h / 2, 0), topTile); //Doesn't start at pos 0
+                    bottomMap.SetTile(new Vector3Int(-x + w / 2, h / 2, 0), bottomTile); //Doesn't start at pos 0
+                }
 			}
 		}
 	}
@@ -139,9 +156,6 @@ public class TileGeneration : MonoBehaviour
 
 	}
 
-    void Update()
-    {
-        
-    }
+    
 
 }
