@@ -409,11 +409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e89b3db70ca0b247bf24ed839381b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialChance: 50
-  activeLimit: 3
+  initialChance: 51
+  activeLimit: 5
   disableLimit: 2
   nSimulation: 5
-  tilemapSize: {x: 50, y: 50, z: 0}
+  tilemapSize: {x: 120, y: 70, z: 0}
   topMap: {fileID: 396802766}
   bottomMap: {fileID: 1472361119}
   topTile: {fileID: 11400000, guid: ee94fdc3b12c9ed4789227a0beecd771, type: 2}
