@@ -9,9 +9,10 @@ public class LevelGeneration : MonoBehaviour
 
 	void Start()
 	{
+
 		int r = Random.Range(0, objects.Length); //Picks a random object from the objects array
 		Instantiate(objects[r], transform.position, Quaternion.identity); //Spawn object in random way in the position of the spawn point
 	}
 
-
+	
 }
