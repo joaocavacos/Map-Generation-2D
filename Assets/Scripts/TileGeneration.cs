@@ -10,25 +10,25 @@ public class TileGeneration : MonoBehaviour
     //Based on Conways Game of Life
 
     [Range(0, 100)]
-    public int initialChance; //Chance for the tile to be "alive"
+    [SerializeField] int initialChance; //Chance for the tile to be "alive"
 
     [Range(1, 8)]
-    public int activeLimit; //If the tile is "alive"
+    [SerializeField] int activeLimit; //If the tile is "alive"
 
     [Range(1, 8)]
-    public int disableLimit; //If the tile is "dead"
+    [SerializeField] int disableLimit; //If the tile is "dead"
 
     [Range(1, 10)]
-    public int nSimulation; //Number of repetitions the program runs
+    [SerializeField] int nSimulation; //Number of repetitions the program runs
 
     private int[,] terrainMap; //Tile map array
-    public Vector3Int tilemapSize;
+    [SerializeField] Vector3Int tilemapSize;
 
 
-    Tilemap topMap;
-    Tilemap bottomMap;
-    Tile topTile;
-    Tile bottomTile;
+    [SerializeField] Tilemap topMap;
+    [SerializeField] Tilemap bottomMap;
+    [SerializeField] Tile topTile;
+    [SerializeField] Tile bottomTile;
 
     int w, h;
 
@@ -55,6 +55,7 @@ public class TileGeneration : MonoBehaviour
         if(terrainMap == null) //If there isn't a tile map create one
 		{
             terrainMap = new int[w, h];
+            initialPos();
 		}
 
 		for (int i = 0; i < repetitions; i++)
@@ -92,11 +93,11 @@ public class TileGeneration : MonoBehaviour
                     if (bound.x == 0 && bound.y == 0) continue; //Exclude x=0 and y=0 because it's current position (not a neighbour tile)
                     if(x+bound.x >= 0 && x+bound.x < w && y+bound.y >= 0 && y+bound.y < h) //Exclude values outside the map
 					{
-                        neighbourTile += oldMap[x + bound.x, y + bound.x];
+                        neighbourTile += oldMap[x + bound.x, y + bound.y];
 					}
 					else
 					{
-                        neighbourTile++;
+                        neighbourTile++; //Delete if you want no border
 					}
 				}
 

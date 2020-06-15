@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-
+	/*
 	public GameObject[] objects; //Grab the prefabs and drop it on the objects array on Unity
 
 	void Start()
@@ -14,5 +14,5 @@ public class LevelGeneration : MonoBehaviour
 		Instantiate(objects[r], transform.position, Quaternion.identity); //Spawn object in random way in the position of the spawn point
 	}
 
-	
+	*/
 }
